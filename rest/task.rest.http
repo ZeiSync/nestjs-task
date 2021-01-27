@@ -1,5 +1,6 @@
 GET http://localhost:3006/tasks
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAzMzQyZTNjLWJkYzItNGZkMC1hZjY4LTg5ODNkODk1OTkwNiIsInVzZXJuYW1lIjoiU29tZUR1ZGUiLCJwYXNzd29yZCI6IiQyYiQxMCR1dWJScHJDaG8uVjNzUE5pdjIvTk51U0daU3VsazhNOXY2NGN2WDlDTS5pUnBuRTE4VnkucSIsImlhdCI6MTYxMTcyMDE3MywiZXhwIjoxNjExNzIzNzczfQ.kowsgHZIlFsGeXLVwn7ONIhPbyuj5DbZbmi1WzIsiR4
 
 ### GET ALL 
 
