@@ -4,21 +4,26 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAzMzQyZTNjL
 
 ### GET ALL 
 
-GET http://localhost:3006/tasks?status=DONE
+GET http://localhost:3006/tasks?status=OPEN
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImE0Y2E4MDk2LTYzZGMtNDYzOS1iMzM0LWRlNDJiMWY1YzY0YiIsInVzZXJuYW1lIjoiU29tZUR1ZGUxIiwicGFzc3dvcmQiOiIkMmIkMTAkejgveFZja2hBbnhVMmQ3aDhjVEtkdW5xbHpkcE9rQ2xpbXdWQnJvbi9TNVF6anhOWFN1b3kiLCJ0YXNrcyI6W10sImlhdCI6MTYxMTgwNjAwMiwiZXhwIjoxNjExODA5NjAyfQ.P7bVSCDRNZFg_-tAz7tRoRD4RPlP5DrN8AflN_tbfMs
 
 ### CREATE A TASK
 POST http://localhost:3006/tasks
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6e30sImlhdCI6MTYxMDk0MzU5NiwiZXhwIjoxNjEwOTQ3MTk2fQ.t0wkpiAf3de9eHMoYDwseL_A8OQl3JiE1qkfvMiGuaw
+// user 1
+// Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImE0Y2E4MDk2LTYzZGMtNDYzOS1iMzM0LWRlNDJiMWY1YzY0YiIsInVzZXJuYW1lIjoiU29tZUR1ZGUxIiwicGFzc3dvcmQiOiIkMmIkMTAkejgveFZja2hBbnhVMmQ3aDhjVEtkdW5xbHpkcE9rQ2xpbXdWQnJvbi9TNVF6anhOWFN1b3kiLCJ0YXNrcyI6W10sImlhdCI6MTYxMTgwNjAwMiwiZXhwIjoxNjExODA5NjAyfQ.P7bVSCDRNZFg_-tAz7tRoRD4RPlP5DrN8AflN_tbfMs
+// user 2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjBhNTQyZTZhLWViOTYtNDY5MS04YTdjLTg2MmJkM2YzNTEwMiIsInVzZXJuYW1lIjoiU29tZUR1ZGUyIiwicGFzc3dvcmQiOiIkMmIkMTAkL0ZHUzdLOEZHZkZFWVdYQXRPM3A3LnJ6L2U1VGlvYzc0bDZtbEpweWFBTE9IYzllWGJ5UzIiLCJ0YXNrcyI6W10sImlhdCI6MTYxMTgwNjAzMSwiZXhwIjoxNjExODA5NjMxfQ.xkYh-auUyloXbGAa9XbcNbIJWtjgMHkQvx0X_9fpg9Q
 
 {
-  "title": "Buy something to eat 1",
-  "description": "Cause im hungry 1"
+  "title": "Buy something to eat 2",
+  "description": "Cause im hungry 2"
 }
 
 ### GET BY ID
-GET http://localhost:3006/tasks/69ea4c97-745d-47a3-bc51-2f75b36879b9
+GET http://localhost:3006/tasks/28265d49-8f5b-40f4-9f5f-ef122e17b37e
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImE0Y2E4MDk2LTYzZGMtNDYzOS1iMzM0LWRlNDJiMWY1YzY0YiIsInVzZXJuYW1lIjoiU29tZUR1ZGUxIiwicGFzc3dvcmQiOiIkMmIkMTAkejgveFZja2hBbnhVMmQ3aDhjVEtkdW5xbHpkcE9rQ2xpbXdWQnJvbi9TNVF6anhOWFN1b3kiLCJ0YXNrcyI6W10sImlhdCI6MTYxMTgwNjAwMiwiZXhwIjoxNjExODA5NjAyfQ.P7bVSCDRNZFg_-tAz7tRoRD4RPlP5DrN8AflN_tbfMs
 
 ### DELETE BY ID
 

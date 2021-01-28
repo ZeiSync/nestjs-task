@@ -3,8 +3,8 @@ POST http://localhost:3006/auth/signup
 Content-Type: application/json
 
 {
-  "username": "SomeDude",
-  "password": "StrongPassword1"
+  "username": "SomeDude2",
+  "password": "StrongPassword2"
 }
 
 ### SIGN IN
@@ -13,6 +13,6 @@ POST http://localhost:3006/auth/signin
 Content-Type: application/json
 
  {
-  "username": "SomeDude",
-  "password": "StrongPassword1"
- }
+  "username": "SomeDude2",
+  "password": "StrongPassword2"
+ }  

@@ -13,6 +13,8 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
+import { GetUser } from 'src/auth/get-user.decorator';
+import { User } from 'src/auth/user.entity';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { FilterTaskDto } from './dto/filter-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
@@ -27,9 +29,10 @@ export class TasksController {
   @Get()
   async getTasks(
     @Query(ValidationPipe) filterTaskDto: FilterTaskDto,
+    @GetUser() user: User,
   ): Promise<Task[]> {
     try {
-      return await this.taskService.getTasks(filterTaskDto);
+      return await this.taskService.getTasks(filterTaskDto, user);
     } catch (error) {
       return error;
     }
@@ -38,9 +41,10 @@ export class TasksController {
   @Get('/:id')
   async getTaskById(
     @Param('id', new ParseUUIDPipe()) id: string,
+    @GetUser() user: User,
   ): Promise<Task> {
     try {
-      return await this.taskService.getTaskById(id);
+      return await this.taskService.getTaskById(id, user);
     } catch (error) {
       return error;
     }
@@ -48,9 +52,12 @@ export class TasksController {
 
   @Post()
   @UsePipes(ValidationPipe)
-  async createTask(@Body() createTaskDto: CreateTaskDto): Promise<Task> {
+  async createTask(
+    @Body() createTaskDto: CreateTaskDto,
+    @GetUser() user: User,
+  ): Promise<Task> {
     try {
-      return await this.taskService.createTask(createTaskDto);
+      return await this.taskService.createTask(createTaskDto, user);
     } catch (error) {
       return error;
     }
@@ -61,9 +68,10 @@ export class TasksController {
   async updateTaskStatus(
     @Param('id', new ParseUUIDPipe()) id: string,
     @Body(TaskStatusValidationPipe) updateTaskDto: UpdateTaskDto,
+    @GetUser() user: User,
   ): Promise<Task> {
     try {
-      return await this.taskService.updateTaskStatus(id, updateTaskDto);
+      return await this.taskService.updateTaskStatus(id, updateTaskDto, user);
     } catch (error) {
       return error;
     }
@@ -73,9 +81,10 @@ export class TasksController {
   @UsePipes(ValidationPipe)
   async deleteTask(
     @Param('id', new ParseUUIDPipe()) id: string,
+    @GetUser() user: User,
   ): Promise<void> {
     try {
-      return await this.taskService.deleteTask(id);
+      return await this.taskService.deleteTask(id, user);
     } catch (error) {
       return error;
     }

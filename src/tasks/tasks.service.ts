@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { User } from 'src/auth/user.entity';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { FilterTaskDto } from './dto/filter-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
@@ -13,25 +14,25 @@ export class TasksService {
     private taskRepository: TaskRepository,
   ) {}
 
-  async getTasks(filterTaskDto: FilterTaskDto): Promise<Task[]> {
+  async getTasks(filterTaskDto: FilterTaskDto, user: User): Promise<Task[]> {
     try {
-      return await this.taskRepository.getTasks(filterTaskDto);
+      return await this.taskRepository.getTasks(filterTaskDto, user);
     } catch (error) {
       return error;
     }
   }
 
-  async getTaskById(id: string): Promise<Task> {
+  async getTaskById(id: string, user: User): Promise<Task> {
     try {
-      return await this.taskRepository.getTaskById(id);
+      return await this.taskRepository.getTaskById(id, user);
     } catch (error) {
       return error;
     }
   }
 
-  async createTask(createTaskDto: CreateTaskDto): Promise<Task> {
+  async createTask(createTaskDto: CreateTaskDto, user: User): Promise<Task> {
     try {
-      return await this.taskRepository.createTask(createTaskDto);
+      return await this.taskRepository.createTask(createTaskDto, user);
     } catch (error) {
       return error;
     }
@@ -40,17 +41,22 @@ export class TasksService {
   async updateTaskStatus(
     id: string,
     updateTaskDto: UpdateTaskDto,
+    user: User,
   ): Promise<Task> {
     try {
-      return await this.taskRepository.updateTaskStatus(id, updateTaskDto);
+      return await this.taskRepository.updateTaskStatus(
+        id,
+        updateTaskDto,
+        user,
+      );
     } catch (error) {
       return error;
     }
   }
 
-  async deleteTask(id: string): Promise<void> {
+  async deleteTask(id: string, user: User): Promise<void> {
     try {
-      return await this.taskRepository.deleteTask(id);
+      return await this.taskRepository.deleteTask(id, user);
     } catch (error) {
       return error;
     }
