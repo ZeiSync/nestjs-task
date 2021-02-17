@@ -1,0 +1,10 @@
+server:
+  port: 3006
+
+db:
+  type: 'postgres'
+  port: 5432
+  database: 'task-application'
+
+jwt:
+  expiresIn: 3600
