@@ -43,20 +43,6 @@ export class TaskRepository extends Repository<Task> {
     }
   }
 
-  async getTaskById(id: string, user: User): Promise<Task> {
-    try {
-      const task = await this.findOne({ where: { id, userId: user.id } });
-
-      if (!task) {
-        throw new NotFoundException(`task_with_${id}_not_found`);
-      }
-
-      return task;
-    } catch (error) {
-      return error;
-    }
-  }
-
   async createTask(createTaskDto: CreateTaskDto, user: User): Promise<Task> {
     try {
       const { title, description } = createTaskDto;
@@ -75,34 +61,6 @@ export class TaskRepository extends Repository<Task> {
         error.stack,
       );
       throw new InternalServerErrorException();
-    }
-  }
-
-  async updateTaskStatus(
-    id: string,
-    updateTaskDto: UpdateTaskDto,
-    user: User,
-  ): Promise<Task> {
-    try {
-      const { status } = updateTaskDto;
-      const task = await this.getTaskById(id, user);
-      task.status = status;
-      await task.save();
-      return task;
-    } catch (error) {
-      return error;
-    }
-  }
-
-  async deleteTask(id: string, user: User): Promise<void> {
-    try {
-      const result = await this.delete({ id, userId: user.id });
-
-      if (result.affected === 0) {
-        throw new NotFoundException(`task_with_${id}_not_found`);
-      }
-    } catch (error) {
-      return error;
     }
   }
 }
